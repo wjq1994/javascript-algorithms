@@ -1,0 +1,17 @@
+{
+  "name": "javascript-algorithms-and-data-structures",
+  "version": "1.0.0",
+  "description": "Algorithms and data-structures implemented on JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d dist"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "babel-plugin-add-module-exports": "^1.0.4"
+  }
+}
