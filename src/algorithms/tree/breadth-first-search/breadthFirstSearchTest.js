@@ -1,6 +1,7 @@
-const BinaryTreeNode = require('./dist/data-structures/tree/BinaryTreeNode.js');
-const breadthFirstSearch = require('./dist/algorithms/tree/breadth-first-search/breadthFirstSearch.js');
-const Queue = require('./dist/data-structures/queue/Queue.js');
+import BinaryTreeNode from "../../../data-structures/tree/BinaryTreeNode";
+import breadthFirstSearch from "./breadthFirstSearch";
+import Queue from "../../../data-structures/queue/Queue";
+
 
 const nodeA = new BinaryTreeNode('A');
 const nodeB = new BinaryTreeNode('B');

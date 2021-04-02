@@ -37,3 +37,7 @@ end BFS
 - [Wikipedia](https://en.wikipedia.org/wiki/Breadth-first_search)
 - [Tree Traversals (Inorder, Preorder and Postorder)](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/)
 - [BFS vs DFS](https://www.geeksforgeeks.org/bfs-vs-dfs-binary-tree/)
+
+## 实现思路
+
+遍历：新建一个队列，把根节点放入队列，从队列中拿出一个节点，将该节点的左右孩子放入队列，然后再拿出一个节点，再将他的左右孩子放入队列，循环操作。
