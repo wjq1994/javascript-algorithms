@@ -1,40 +1,69 @@
-import BinaryTreeNode from "../../../data-structures/tree/BinaryTreeNode";
-import breadthFirstSearch from "./breadthFirstSearch";
-import Queue from "../../../data-structures/queue/Queue";
+class Node {
+    constructor(value) {
+        this.left = null;
+        this.right = null;
 
+        this.value = value;
+    }
 
-const nodeA = new BinaryTreeNode('A');
-const nodeB = new BinaryTreeNode('B');
-const nodeC = new BinaryTreeNode('C');
-const nodeD = new BinaryTreeNode('D');
-const nodeE = new BinaryTreeNode('E');
-const nodeF = new BinaryTreeNode('F');
-const nodeG = new BinaryTreeNode('G');
+    setLeft(node) {
+        this.left = node;
+        return this;
+    }
+
+    setRight(node) {
+        this.right = node;
+        return this;
+    }
+
+    // 先放left，再放right
+    traverseInOrder() {
+        let traverse = [];
+        if (this.left) {
+            traverse = traverse.concat(this.left.traverseInOrder());
+        }
+        traverse.push(this.value);
+        if (this.right) {
+            traverse = traverse.concat(this.right.traverseInOrder());
+        }
+        return traverse;
+    }
+
+    toString() {
+        return this.traverseInOrder().toString();
+    }
+}
+
+const nodeA = new Node('A');
+const nodeB = new Node('B');
+const nodeC = new Node('C');
+const nodeD = new Node('D');
+const nodeE = new Node('E');
+const nodeF = new Node('F');
+const nodeG = new Node('G');
 
 nodeA.setLeft(nodeB).setRight(nodeC);
 nodeB.setLeft(nodeD).setRight(nodeE);
 nodeC.setLeft(nodeF).setRight(nodeG);
 
-console.log(nodeA.toString());
+let queue = [];
 
-const enterNodeQueue = new Queue();
-const leaveNodeQueue = new Queue();
+let result = []
 
-breadthFirstSearch(nodeA, {
-    allowTraversal: (node, child) => {
-        // Forbid traversing left half of the tree.
-        return child.value !== 'B';
-      },
-      enterNode: enterNodeCallback,
-      leaveNode: leaveNodeCallback,
-})
-
-function enterNodeCallback(node) {
-    enterNodeQueue.enqueue(node.value);
-    console.log("enterNodeCallback", enterNodeQueue.toString());
+function breadthFirstSearch(node) {
+    let currentNode = node;
+    queue.push(currentNode);
+    while(queue.length !== 0) {
+        currentNode = queue.shift();
+        if (currentNode.left) {
+            queue.push(currentNode.left);
+        }
+        if (currentNode.right) {
+            queue.push(currentNode.right);
+        }
+        result.push(currentNode.value);
+    }
 }
 
-function leaveNodeCallback(node) {
-    leaveNodeQueue.enqueue(node.value);
-    console.log("leaveNodeCallback", leaveNodeQueue.toString());
-}
+breadthFirstSearch(nodeA)
+console.log(result);

@@ -1,6 +1,6 @@
-const BinaryTreeNode = require('./dist/data-structures/tree/BinaryTreeNode.js');
-const breadthFirstSearch = require('./dist/algorithms/tree/breadth-first-search/breadthFirstSearch.js');
-const Queue = require('./dist/data-structures/queue/Queue.js');
+const BinaryTreeNode = require('../dist/data-structures/tree/BinaryTreeNode.js');
+const {depthFirstSearch} = require('../dist/algorithms/tree/depth-first-search/depthFirstSearch.js');
+const Queue = require('../dist/data-structures/queue/Queue.js');
 
 const nodeA = new BinaryTreeNode('A');
 const nodeB = new BinaryTreeNode('B');
@@ -19,11 +19,11 @@ console.log(nodeA.toString());
 const enterNodeQueue = new Queue();
 const leaveNodeQueue = new Queue();
 
-breadthFirstSearch(nodeA, {
-    allowTraversal: (node, child) => {
-        // Forbid traversing left half of the tree.
-        return child.value !== 'B';
-      },
+depthFirstSearch(nodeA, {
+    // allowTraversal: (node, child) => {
+    //     // Forbid traversing left half of the tree.
+    //     return child.value !== 'B';
+    //   },
       enterNode: enterNodeCallback,
       leaveNode: leaveNodeCallback,
 })
